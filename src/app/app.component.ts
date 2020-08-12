@@ -17,15 +17,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.isUserLogged()) {
-      const role = JSON.parse(localStorage.getItem('userCredentials')).roles[0];
-      localStorage.setItem('selectedRole', role);
-      this.redirectToProperView(role);
-    } else {
-      if (location.pathname !== '/auth/activate') {
-        this.router.navigate([environment.routes.signInUrl]);
-      }
-    }
+    // if (this.isUserLogged()) {
+    //   const role = JSON.parse(localStorage.getItem('userCredentials')).roles[0];
+    //   localStorage.setItem('selectedRole', role);
+    //   this.redirectToProperView(role);
+    // } else {
+    //   if (location.pathname !== '/auth/activate') {
+    //     this.router.navigate([environment.routes.signInUrl]);
+    //   }
+    // }
   }
 
   isUserLogged(): boolean {

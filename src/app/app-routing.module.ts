@@ -20,7 +20,13 @@ const routes: Routes = [
     path: 'teacher',
     loadChildren: () => import('./modules/administrator/teacher.module').then(m => m.TeacherModule)
     // canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'accounts',
+    loadChildren: () => import('./modules/accounts/accounts.module').then(m => m.AccountsModule)
+    // canActivate: [AuthenticationGuard]
   }
+
 
 ];
 

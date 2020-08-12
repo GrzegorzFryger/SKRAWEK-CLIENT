@@ -8,12 +8,18 @@ import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NavigationComponent } from './layout/navigation/navigation.component';
+import {MatButtonModule} from '@angular/material/button';
+import { AccountComponent } from './layout/account/account.component';
+
 
 registerLocaleData(localePl);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    AccountComponent
   ],
   imports: [
     AppRoutingModule,
@@ -22,6 +28,7 @@ registerLocaleData(localePl);
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
+    MatButtonModule,
   ],
   providers: [
     {

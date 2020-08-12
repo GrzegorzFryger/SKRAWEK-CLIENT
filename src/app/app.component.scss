@@ -1,0 +1,16 @@
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #F0F2F5;
+
+  .navigation-container {
+    flex-basis: 6%;
+    flex-grow: 0;
+  }
+
+  .main-container {
+    flex-basis: 94%;
+  }
+}

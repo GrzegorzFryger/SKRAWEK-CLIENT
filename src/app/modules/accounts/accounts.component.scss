@@ -1,0 +1,45 @@
+.account-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .left-side {
+    flex-basis: 13%;
+    //background-color: #C40F11;
+  }
+
+  .main-side {
+    flex-basis: 87%;
+    padding: 8px 48px 0 48px;
+
+    .item {
+      margin-bottom: 16px;
+    }
+
+    .navigation {
+
+      .navigation-container {
+        height: 40px;
+        display: flex;
+        justify-content: flex-start;
+
+      }
+    }
+
+    .tab {
+      .mat-card {
+        border-radius: 16px;
+      }
+    }
+
+  }
+
+  //.right-side {
+  //  flex-basis: 13%;
+  //  //background-color: #C40F11;
+  //}
+}
+
+.mat-cell, .mat-footer-cell {
+  font-size: 12px;
+}

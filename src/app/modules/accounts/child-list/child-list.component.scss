@@ -1,0 +1,17 @@
+.children-list {
+  padding: 8px;
+
+  .search {
+    width: 100%;
+
+    .mat-form-field {
+      width: 50%
+
+    }
+  }
+
+  .mat-row:hover {
+    cursor: pointer;
+    background: #b4b4b433
+  }
+}

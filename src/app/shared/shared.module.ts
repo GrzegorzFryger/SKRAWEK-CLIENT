@@ -12,10 +12,11 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldControl, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { GenericListComponent } from './generic-list/generic-list.component';
 
 
 @NgModule({
-  declarations: [UserComponent, UserEditComponent ],
+  declarations: [UserComponent, UserEditComponent, GenericListComponent ],
   imports: [
     CommonModule,
     MatButtonModule,

@@ -1,0 +1,72 @@
+<div class="guardians-list">
+  <div class="search">
+
+    <mat-form-field>
+      <mat-label>Szukaj</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Wyszukaj dzecko">
+    </mat-form-field>
+  </div>
+
+  <div class="table">
+    <mat-table [dataSource]="dataToDisplay" matSort matSortActive="surname" matSortDirection="desc">
+
+      <ng-container matColumnDef="select">
+        <mat-header-cell mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selectionModel.hasValue() && isAllSelected()"
+                        [indeterminate]="selectionModel.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let guardian">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selectionModel.toggle(guardian) : null"
+                        [checked]="selectionModel.isSelected(guardian)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Imię</mat-header-cell>
+        <mat-cell *matCellDef="let guardian"> {{guardian.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="surname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nazwisko</mat-header-cell>
+        <mat-cell *matCellDef="let guardian"> {{guardian.surname}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Telefon</mat-header-cell>
+        <mat-cell *matCellDef="let guardian"> {{guardian.phone}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell
+          *matCellDef="let guardian"> {{guardian.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Status</mat-header-cell>
+        <mat-cell *matCellDef="let guardian">
+          <ng-container *ngIf="guardian.status === 'ACTIVE'; else status">
+            Aktywny
+          </ng-container>
+          <ng-template #status>
+            Nie aktywny
+          </ng-template>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row *matRowDef="let row, let guardian; columns: columnsToDisplay;"
+               (click)="onClick(guardian)">
+      </mat-row>
+    </mat-table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+

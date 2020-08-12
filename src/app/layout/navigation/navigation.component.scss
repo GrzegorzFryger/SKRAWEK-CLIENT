@@ -1,0 +1,56 @@
+.navigation {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  background-color: #ffffff;
+  padding: 4px 8px 4px 8px;
+
+  .navigation-col {
+    flex: 1;
+  }
+
+  .left-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+
+    .img {
+      flex-basis: 33%;
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url('../../../assets/images/skarwek2.png');
+    }
+  }
+
+  .middle-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    .option {
+      height: 100%;
+      flex: 1;
+      color: #65676b;
+
+    }
+  }
+
+  .right-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-end;
+
+  }
+}
+
+
+
