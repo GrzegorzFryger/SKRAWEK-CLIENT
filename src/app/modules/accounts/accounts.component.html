@@ -24,16 +24,14 @@
               <app-child-list [dataSource]="childrenOutput"
                               (onToggleEvents)="onSelectChildEvent($event)"
                               (onClickEvents)="onClickChildEvent($event)">
-
               </app-child-list>
             </mat-tab>
+
             <mat-tab label="Opiekunowie">
               <app-guardian-list
                 [dataSource]="guardiansOutput"
                 (onToggleEvents)="onSelectGuardianEvent($event)"
-                (onClickEvents)="onClickGuardianEvent($event)"
-              >
-
+                (onClickEvents)="onClickGuardianEvent($event)">
               </app-guardian-list>
             </mat-tab>
           </mat-tab-group>
@@ -41,7 +39,7 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="currentRoute === '/accounts/child'">
+    <ng-container *ngIf="currentRoute !== '/accounts'">
       <div class="item">
         <router-outlet></router-outlet>
       </div>

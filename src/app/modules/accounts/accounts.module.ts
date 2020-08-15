@@ -20,11 +20,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { GuardianListComponent } from './guardian-list/guardian-list.component';
+import { ChildDetailsComponent } from './child-details/child-details.component';
 
 
 
 @NgModule({
-  declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent],
+  declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent, ChildDetailsComponent],
     imports: [
         SharedModule,
         CommonModule,
