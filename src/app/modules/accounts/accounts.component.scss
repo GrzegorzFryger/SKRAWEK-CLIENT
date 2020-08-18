@@ -4,42 +4,45 @@
   display: flex;
 
   .left-side {
-    flex-basis: 13%;
-    //background-color: #C40F11;
+    flex: 1 1 13%;
   }
 
   .main-side {
-    flex-basis: 87%;
+    flex: 1 1 87%;
+    display: flex;
+    flex-direction: column;
     padding: 8px 48px 0 48px;
 
-    .item {
+    .item-navigation {
+      flex:  0 1 0;
+      width: 100%;
       margin-bottom: 16px;
-    }
-
-    .navigation {
 
       .navigation-container {
-        height: 40px;
         display: flex;
         justify-content: flex-start;
-
+        height: 40px;
       }
     }
 
-    .tab {
+    .item-context {
+      width: 100%;
+      flex: 2;
+    }
+
+    .tables {
       .mat-card {
+        width: 100%;
         border-radius: 16px;
       }
     }
 
   }
 
-  //.right-side {
-  //  flex-basis: 13%;
-  //  //background-color: #C40F11;
-  //}
 }
 
 .mat-cell, .mat-footer-cell {
   font-size: 12px;
 }
+
+

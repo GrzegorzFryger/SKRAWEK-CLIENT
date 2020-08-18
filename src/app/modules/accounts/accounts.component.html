@@ -5,9 +5,9 @@
 
   <div class="main-side">
 
-    <div class="item navigation">
+    <div class="item-navigation">
       <div class="navigation-container">
-        <ng-container *ngIf="currentRoute !== '/accounts'" >
+        <ng-container *ngIf="currentRoute !== '/accounts'">
           <button (click)="onBackButton()" mat-icon-button>
             <span class="material-icons">arrow_back</span>
           </button>
@@ -17,7 +17,7 @@
     </div>
 
     <ng-container *ngIf="currentRoute === '/accounts'">
-      <div class="item tab">
+      <div class="item-context tables">
         <mat-card>
           <mat-tab-group>
             <mat-tab label="Dzieci">
@@ -40,7 +40,7 @@
     </ng-container>
 
     <ng-container *ngIf="currentRoute !== '/accounts'">
-      <div class="item">
+      <div class="item-context">
         <router-outlet></router-outlet>
       </div>
     </ng-container>

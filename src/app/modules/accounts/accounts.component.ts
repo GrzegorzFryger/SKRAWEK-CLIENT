@@ -1,13 +1,14 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ChildService} from '../../data/service/accounts/child.service';
 import {Child} from '../../data/model/accounts/child';
-import {Observable, ReplaySubject} from 'rxjs';
+import {ReplaySubject} from 'rxjs';
 import {NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {Location} from '@angular/common';
 import {Guardian} from '../../data/model/accounts/guardian';
 import {GuardianService} from '../../data/service/accounts/guardian.service';
 import {DataOutputList} from '../../data/model/data-output-list';
+import {ChildSelectSharedService} from './shared/child-select-shared.service';
 
 @Component({
   selector: 'app-accounts',
@@ -36,7 +37,8 @@ export class AccountsComponent implements OnInit {
   constructor(private childService: ChildService,
               private guardianService: GuardianService,
               private router: Router,
-              private location: Location) {
+              private location: Location,
+              private childSelectSharedService: ChildSelectSharedService) {
     this.childrenSub = new ReplaySubject<Array<Child>>(1);
 
     this.childrenOutput = {
@@ -69,16 +71,15 @@ export class AccountsComponent implements OnInit {
         console.log(resp);
         this.guardiansSub.next(resp);
       },
-        error => {
+      error => {
         console.log(error);
-        },
-        () => {
-          // ON COMPLETE
-        }
+      },
+      () => {
+        // ON COMPLETE
+      }
     );
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: RouterEvent) => {
-      console.log(event);
       this.currentRoute = event.url;
     });
 
@@ -91,8 +92,15 @@ export class AccountsComponent implements OnInit {
   }
 
   onClickChildEvent($event: Child) {
-    console.log('onClikc' + $event);
-    this.router.navigate(['/accounts/child']);
+
+    this.router.navigate(['/accounts/child']).then(r => {
+      console.log('form account');
+
+    });
+
+    this.childSelectSharedService.selectChild($event);
+
+
   }
 
   /** ------------- */
@@ -104,8 +112,8 @@ export class AccountsComponent implements OnInit {
   }
 
   onClickGuardianEvent($event: Guardian) {
-    console.log('onClikc' + $event);
     this.router.navigate(['/accounts/child']);
+
   }
 
   /** ------------- */

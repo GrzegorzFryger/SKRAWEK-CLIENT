@@ -1,0 +1,22 @@
+.child-details {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .personal-data {
+    flex: 0 1 45%;
+    background-color: #6DB33F;
+
+    .mat-card  {
+      border-radius: 16px;
+    }
+  }
+
+  .other-information {
+    flex: 0 1 45%;
+    background-color: #3f51b5;
+  }
+
+
+}
