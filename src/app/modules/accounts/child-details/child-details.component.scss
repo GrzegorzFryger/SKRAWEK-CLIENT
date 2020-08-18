@@ -5,17 +5,46 @@
   justify-content: space-around;
 
   .personal-data {
-    flex: 0 1 45%;
-    background-color: #6DB33F;
+    flex: 0 1 30%;
 
     .mat-card  {
       border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+
+      .title-container {
+        flex: 0 0 10%;
+        display: flex;
+        justify-content: center;
+
+        .title {
+          font-size: 24px;
+          font-weight: 500;
+        }
+      }
+
+      .img-container {
+        flex: 0 1 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+      }
+
+      .context-container {
+        flex: 1 1 0;
+        background-color: #34bfa3;
+        display: flex;
+
+      }
+
+
     }
   }
 
   .other-information {
-    flex: 0 1 45%;
-    background-color: #3f51b5;
+    flex: 0 1 60%;
+
   }
 
 

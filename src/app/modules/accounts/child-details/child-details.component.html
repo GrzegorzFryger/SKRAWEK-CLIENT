@@ -1,17 +1,18 @@
 <div class="child-details">
   <div class="personal-data">
     <mat-card>
-      <mat-card-header>
-        <mat-card-title>Name and Surname</mat-card-title>
-      </mat-card-header>
-      <img src="../../../../assets/images/girl2.png"
-           height="200" width="200"/>
 
+      <div class="title-container">
+        <div class="title">{{(child | async).name }} {{(child | async).surname }}</div>
+      </div>
+      <div class="img-container">
+        <img *ngIf="(child | async)?.gender == 'FEMALE' " src="../../../../assets/images/girl.png" height="200" width="200"/>
+        <img *ngIf="(child | async)?.gender == 'MALE' " src="../../../../assets/images/icon-boy.png" height="200" width="200"/>
+      </div>
 
-      <mat-card-content>
+      <div class="context-container">
 
-      </mat-card-content>
-
+      </div>
     </mat-card>
   </div>
 
