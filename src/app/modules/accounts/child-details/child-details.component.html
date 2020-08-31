@@ -1,18 +1,94 @@
 <div class="child-details">
   <div class="personal-data">
     <mat-card>
+      <div class="img-container">
+        <img *ngIf="(child | async)?.gender == 'FEMALE' " src="../../../../assets/images/girl.png" height="150"
+             width="150"/>
+        <img *ngIf="(child | async)?.gender == 'MALE' " src="../../../../assets/images/icon-boy.png" height="150"
+             width="150"/>
+      </div>
 
       <div class="title-container">
         <div class="title">{{(child | async).name }} {{(child | async).surname }}</div>
       </div>
-      <div class="img-container">
-        <img *ngIf="(child | async)?.gender == 'FEMALE' " src="../../../../assets/images/girl.png" height="200" width="200"/>
-        <img *ngIf="(child | async)?.gender == 'MALE' " src="../../../../assets/images/icon-boy.png" height="200" width="200"/>
-      </div>
 
-      <div class="context-container">
+      <ng-container>
+        <div class="context-container">
+          <mat-accordion multi>
+            <mat-expansion-panel class="mat-elevation-z0" [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informacje personalne
+                </mat-panel-title>
+                <mat-panel-description>
+                  Adres, pesel, ect.
+                </mat-panel-description>
+              </mat-expansion-panel-header>
 
-      </div>
+              <form class="form-container" [formGroup]="form">
+                <div class="field">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Imię</mat-label>
+                    <input [readonly]="readOnly" matInput placeholder="Imię" formControlName="name">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nazwisko</mat-label>
+                    <input [readonly]="readOnly" matInput placeholder="Nazwisko" formControlName="surname">
+                  </mat-form-field>
+                </div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Płeć</mat-label>
+                  <mat-select [disabled]="readOnly" placeholder="Płeć" formControlName="gender">
+                    <mat-option *ngFor="let gender of genderTypes" [value]="gender.value">
+                      {{gender.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="field">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Pesel</mat-label>
+                    <input [readonly]="readOnly" matInput placeholder="pesel" formControlName="pesel">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Data urodzin</mat-label>
+                    <input [readonly]="readOnly" matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth">
+                    <mat-datepicker-toggle [disabled]="readOnly" matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                    <mat-datepicker #dateOfBirth></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="field">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Kod pocztowy</mat-label>
+                    <input [readonly]="readOnly" matInput placeholder="Kod pocztowy" formControlName="postalCode">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Miasto</mat-label>
+                    <input [readonly]="readOnly" matInput placeholder="Miasto" formControlName="city">
+                  </mat-form-field>
+                </div>
+                <mat-form-field class="street" appearance="outline">
+                  <mat-label>Ulica i numer</mat-label>
+                  <input [readonly]="readOnly" matInput placeholder="Ulica" formControlName="streetNumber">
+                </mat-form-field>
+              </form>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="mat-elevation-z0">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Informacje szkolne
+                </mat-panel-title>
+                <mat-panel-description>
+                  Grupa, Okres nauki ect.
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="form-container">
+
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </ng-container>
     </mat-card>
   </div>
 
@@ -21,3 +97,4 @@
   </div>
 
 </div>
+

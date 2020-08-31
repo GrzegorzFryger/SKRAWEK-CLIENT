@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AccountsRoutingModule } from './accounts-routing.module';
+import {AccountsRoutingModule} from './accounts-routing.module';
 import {SharedModule} from '../../shared/shared.module';
-import { AccountsComponent } from './accounts.component';
-import { ChildListComponent } from './child-list/child-list.component';
+import {AccountsComponent} from './accounts.component';
+import {ChildListComponent} from './child-list/child-list.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -18,30 +18,41 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
-import { AccountDetailsComponent } from './account-details/account-details.component';
-import { GuardianListComponent } from './guardian-list/guardian-list.component';
-import { ChildDetailsComponent } from './child-details/child-details.component';
-
+import {AccountDetailsComponent} from './account-details/account-details.component';
+import {GuardianListComponent} from './guardian-list/guardian-list.component';
+import {ChildDetailsComponent} from './child-details/child-details.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
-  declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent, ChildDetailsComponent],
-    imports: [
-        SharedModule,
-        CommonModule,
-        AccountsRoutingModule,
-        MatTableModule,
-        MatCheckboxModule,
-        MatPaginatorModule,
-        MatFormFieldModule,
-        MatSortModule,
-        MatInputModule,
-        MatCardModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatTabsModule,
-        MatDividerModule,
-        MatIconModule
-    ]
+  declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent,
+    ChildDetailsComponent],
+  imports: [
+    SharedModule,
+    CommonModule,
+    AccountsRoutingModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatSortModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatIconModule,
+    MatExpansionModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
+  ]
 })
-export class AccountsModule { }
+export class AccountsModule {
+}
