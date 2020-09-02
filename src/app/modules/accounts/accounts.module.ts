@@ -24,7 +24,7 @@ import {ChildDetailsComponent} from './child-details/child-details.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 
 
@@ -51,7 +51,8 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRippleModule
   ]
 })
 export class AccountsModule {

@@ -82,9 +82,26 @@
                   Grupa, Okres nauki ect.
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <div class="form-container">
 
-              </div>
+              <form class="form-container" [formGroup]="form">
+                <mat-form-field appearance="outline">
+                  <mat-label>Data rozpoczecia</mat-label>
+                  <input [readonly]="readOnly" matInput [matDatepicker]="startDate" formControlName="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                  <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Data zakończenia</mat-label>
+                  <input [readonly]="readOnly" matInput [matDatepicker]="endDate" formControlName="endDate">
+                  <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                  <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="group" appearance="outline">
+                  <mat-label>Grupa</mat-label>
+                  <input [readonly]="readOnly" matInput placeholder="Grupa" formControlName="group">
+                </mat-form-field>
+              </form>
+
             </mat-expansion-panel>
           </mat-accordion>
         </div>
@@ -93,6 +110,44 @@
   </div>
 
   <div class="other-information">
+    <mat-card class="item">
+      <mat-accordion>
+        <mat-expansion-panel class="mat-elevation-z0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Opiekunowie dziecka
+            </mat-panel-title>
+            <mat-panel-description>
+              Lista prawnych opiekunów dziecka
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="item-context-container">
+            <ng-container *ngFor="let guardian of childGuardians | async; index as i ">
+              <div class="item-context">
+                <div class="item-img">
+                  <img  src="../../../../assets/images/girl.png" height="25" width="25"/>
+                </div>
+                <div class="item-col">
+                  {{guardian.name}} {{guardian.surname}}
+                </div>
+                <div class="item-col">
+                  {{guardian.phone}}
+                </div>
+                <div class="item-col">
+                  {{guardian.email}}
+                </div>
+              </div>
+              <div class="divider">
+              </div>
+            </ng-container>
+
+
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+
 
   </div>
 
