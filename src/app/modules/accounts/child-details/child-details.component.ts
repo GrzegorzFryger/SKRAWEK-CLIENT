@@ -27,15 +27,16 @@ export class ChildDetailsComponent implements OnInit {
     {value: 'MALE', viewValue: 'Chłopiec'},
     {value: 'FEMALE', viewValue: 'Dziewczynka'}
   ];
+  hover = false;
 
-  constructor(private childSelectSharedService: ChildSelectSharedService, private fb: FormBuilder, private guardianService: GuardianService) {
+  constructor(private childSelectSharedService: ChildSelectSharedService,
+              private fb: FormBuilder,
+              private guardianService: GuardianService) {
     this.child = this.childSelectSharedService.selectedChild;
 
   }
 
   ngOnInit(): void {
-
-
     this.child.subscribe(child => {
       this.childGuardians = this.guardianService.findAllGuardians(child.id);
 
@@ -48,13 +49,31 @@ export class ChildDetailsComponent implements OnInit {
         postalCode: [child.postalCode, [Validators.required]],
         city: [child.city, [Validators.required]],
         streetNumber: [child.streetNumber, [Validators.required]],
+        status: ['', []],
         startDate: [child.startDate, [Validators.required]],
         endDate: [child.endDate, [Validators.required]],
-        group: [child.group, [Validators.required]]
+        group: [child.group, [Validators.required]],
+        commentsAdministration: ['', [Validators.required]],
+        commentsMeals: ['', [Validators.required]],
+        commentsOthers: ['', [Validators.required]],
       });
     });
 
-
   }
 
+  onHover($event: MouseEvent) {
+    this.hover = $event.type === 'mouseover';
+  }
+
+  onEdit() {
+    this.readOnly = false;
+  }
+
+  onCancelForm() {
+    this.readOnly = true;
+  }
+
+  onSaveForm() {
+
+  }
 }

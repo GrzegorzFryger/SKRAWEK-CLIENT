@@ -11,7 +11,6 @@ export class ChildSelectSharedService {
   private childSelectSubject: ReplaySubject<Child>;
 
   constructor() {
-    console.log('create shared service')
     this.childSelectSubject = new ReplaySubject<Child>(1);
     this.selectedChildObservable = this.childSelectSubject.asObservable();
   }
