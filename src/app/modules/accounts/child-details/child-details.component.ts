@@ -19,14 +19,8 @@ interface GenderType {
 })
 export class ChildDetailsComponent implements OnInit {
   child: Observable<Child>;
-  form: FormGroup;
-  readOnly = true;
   childGuardians: Observable<Array<Guardian>>;
-
-  genderTypes: GenderType[] = [
-    {value: 'MALE', viewValue: 'Chłopiec'},
-    {value: 'FEMALE', viewValue: 'Dziewczynka'}
-  ];
+  readOnlyForm = true;
   hover = false;
 
   constructor(private childSelectSharedService: ChildSelectSharedService,
@@ -39,24 +33,6 @@ export class ChildDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.child.subscribe(child => {
       this.childGuardians = this.guardianService.findAllGuardians(child.id);
-
-      this.form = this.fb.group({
-        name: [child.name, []],
-        surname: [child.surname, []],
-        gender: [child.gender, []],
-        pesel: [child.pesel, []],
-        dateOfBirth: [child.dateOfBirth, []],
-        postalCode: [child.postalCode, [Validators.required]],
-        city: [child.city, [Validators.required]],
-        streetNumber: [child.streetNumber, [Validators.required]],
-        status: ['', []],
-        startDate: [child.startDate, [Validators.required]],
-        endDate: [child.endDate, [Validators.required]],
-        group: [child.group, [Validators.required]],
-        commentsAdministration: ['', [Validators.required]],
-        commentsMeals: ['', [Validators.required]],
-        commentsOthers: ['', [Validators.required]],
-      });
     });
 
   }
@@ -66,14 +42,14 @@ export class ChildDetailsComponent implements OnInit {
   }
 
   onEdit() {
-    this.readOnly = false;
+    this.readOnlyForm = false;
   }
 
   onCancelForm() {
-    this.readOnly = true;
+    this.readOnlyForm = true;
   }
 
   onSaveForm() {
-
+    this.readOnlyForm = true;
   }
 }

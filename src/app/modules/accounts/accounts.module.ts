@@ -26,11 +26,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {ChildFormComponent} from './forms/child-form/child-form.component';
 
 
 @NgModule({
   declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent,
-    ChildDetailsComponent],
+    ChildDetailsComponent, ChildFormComponent],
   imports: [
     SharedModule,
     CommonModule,

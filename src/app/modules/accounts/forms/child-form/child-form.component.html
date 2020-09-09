@@ -1,0 +1,120 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Informacje personalne</mat-card-title>
+    <mat-card-subtitle>Adres, pesel, ect.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="form-container" [formGroup]="form">
+      <div class="field">
+        <mat-form-field appearance="outline">
+          <mat-label>Imię</mat-label>
+          <input [readonly]="readOnly" matInput placeholder="Imię" formControlName="name">
+          <mat-error *ngIf="hasError('name', 'required')">
+           Imię jest wymagane
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Nazwisko</mat-label>
+          <input [readonly]="readOnly" matInput placeholder="Nazwisko" formControlName="surname">
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Płeć</mat-label>
+        <mat-select [disabled]="readOnly" placeholder="Płeć" formControlName="gender">
+          <mat-option *ngFor="let gender of genderTypes" [value]="gender.value">
+            {{gender.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="field">
+        <mat-form-field appearance="outline">
+          <mat-label>Pesel</mat-label>
+          <input [readonly]="readOnly" matInput placeholder="pesel" formControlName="pesel">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Data urodzin</mat-label>
+          <input [readonly]="readOnly" matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth">
+          <mat-datepicker-toggle [disabled]="readOnly" matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+          <mat-datepicker #dateOfBirth></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="field">
+        <mat-form-field appearance="outline">
+          <mat-label>Kod pocztowy</mat-label>
+          <input [readonly]="readOnly" matInput placeholder="Kod pocztowy" formControlName="postalCode">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Miasto</mat-label>
+          <input [readonly]="readOnly" matInput placeholder="Miasto" formControlName="city">
+        </mat-form-field>
+      </div>
+      <mat-form-field class="street" appearance="outline">
+        <mat-label>Ulica i numer</mat-label>
+        <input [readonly]="readOnly" matInput placeholder="Ulica" formControlName="streetNumber">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Informacje szkolne</mat-card-title>
+    <mat-card-subtitle>Grupa, Okres nauki ect.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="form-container" [formGroup]="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select [disabled]="readOnly" placeholder="Status" formControlName="status">
+          <mat-option *ngFor="let gender of genderTypes" [value]="gender.value">
+            {{gender.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="field">
+        <mat-form-field appearance="outline">
+          <mat-label>Data rozpoczecia</mat-label>
+          <input [readonly]="readOnly" matInput [matDatepicker]="startDate" formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Data zakończenia</mat-label>
+          <input [readonly]="readOnly" matInput [matDatepicker]="endDate" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="group" appearance="outline">
+        <mat-label>Grupa</mat-label>
+        <input [readonly]="readOnly" matInput placeholder="Grupa" formControlName="group">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Uwagi</mat-card-title>
+    <mat-card-subtitle>Dotyczące dyrekcji i administracji, posiłków ect.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="form-container" [formGroup]="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Uwagi dotyczące dyrekcji i administracji</mat-label>
+        <textarea [readonly]="readOnly" placeholder="W systemie nie ma jeszcze żadnych uwag"
+                  formControlName="commentsAdministration" matInput></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Uwagi dotyczące posiłków</mat-label>
+        <textarea [readonly]="readOnly" placeholder="W systemie nie ma jeszcze żadnych uwag"
+                  formControlName="commentsMeals" matInput></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Inne uwagi</mat-label>
+        <textarea [readonly]="readOnly" placeholder="W systemie nie ma jeszcze żadnych uwag"
+                  formControlName="commentsOthers" matInput></textarea>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
