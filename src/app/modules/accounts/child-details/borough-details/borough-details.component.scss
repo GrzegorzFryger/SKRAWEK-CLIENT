@@ -1,0 +1,14 @@
+.mat-card {
+  margin-bottom: 16px;
+  border-radius: 16px;
+
+  .mat-card-content {
+    padding: 4px 16px 4px 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F0F2F5;
+  }
+}

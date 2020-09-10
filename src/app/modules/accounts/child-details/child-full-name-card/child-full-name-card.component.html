@@ -1,0 +1,32 @@
+<ng-container *ngIf="!(editModeOutput | async); else editMode">
+  <div class="full-name-card">
+    <div class="full-name-card-container">
+      <div class="img-col">
+        <img *ngIf="(childInput | async)?.gender == 'FEMALE' " src="../../../../assets/images/girl.png" height="80"
+             width="80"/>
+        <img *ngIf="(childInput | async)?.gender == 'MALE' " src="../../../../assets/images/icon-boy.png" height="80"
+             width="80"/>
+      </div>
+      <div class="title-col">
+        <span class="full-name"> {{(childInput | async).name }} {{(childInput | async).surname }}</span>
+        <p>Dziecko</p>
+      </div>
+      <div class="action-button">
+        <button (click)="onEdit()" mat-icon-button>
+          <span class="material-icons">edit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #editMode>
+  <div class="edit-card">
+    <div class="edit-card-item">
+      <span class="edit">Tryb edycji danych dziecka </span>
+    </div>
+    <div class="edit-card-item action-buttons">
+      <button mat-raised-button color="warn" class="margin-right" (click)="onCancelForm()">Anuluj</button>
+      <button mat-raised-button color="primary" (click)="onSaveForm()">Zapisz</button>
+    </div>
+  </div>
+</ng-template>

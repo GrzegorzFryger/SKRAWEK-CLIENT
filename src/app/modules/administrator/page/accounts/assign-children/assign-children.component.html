@@ -42,7 +42,7 @@
               <p>Wybrane dzieci:</p>
               <div class="item-container">
                 <div *ngFor="let child of selectedChildren" class="item-list">
-                  <div class="img inline">
+                  <div class="img-col inline">
                     <div class="d-flex justify-content-center">
                       <img *ngIf="child.gender === 'FEMALE'" src="../../../assets/images/girl.png" height="50" width="50"
                            alt="dziewczynka"/>
@@ -50,7 +50,7 @@
                            alt="chłopiec"/>
                     </div>
                   </div>
-                  <div class="personal-data inline">
+                  <div class="child-details-left-container inline">
                     <p>{{child.name}} {{child.surname}} </p>
                   </div>
                 </div>
@@ -58,13 +58,13 @@
               <p>Wybrani rodzice:</p>
               <div class="item-container">
                 <div *ngFor="let guardian of selectedGuardians" class="item-list">
-                  <div class="img inline">
+                  <div class="img-col inline">
                     <div class="d-flex justify-content-center">
                       <img src="../../../assets/images/tata.png" height="50" width="50"
                            />
                     </div>
                   </div>
-                  <div class="personal-data inline">
+                  <div class="child-details-left-container inline">
                     <p>{{guardian.name}} {{guardian.surname}} </p>
                   </div>
                 </div>

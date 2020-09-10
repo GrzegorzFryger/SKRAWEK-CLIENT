@@ -26,12 +26,15 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import {ChildFormComponent} from './forms/child-form/child-form.component';
+import {ChildFormComponent} from './child-details/child-form/child-form.component';
+import { BoroughDetailsComponent } from './child-details/borough-details/borough-details.component';
+import { GuardiansChildComponent } from './child-details/guardians-child/guardians-child.component';
+import { ChildFullNameCardComponent } from './child-details/child-full-name-card/child-full-name-card.component';
 
 
 @NgModule({
   declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent,
-    ChildDetailsComponent, ChildFormComponent],
+    ChildDetailsComponent, ChildFormComponent, BoroughDetailsComponent, GuardiansChildComponent, ChildFullNameCardComponent],
   imports: [
     SharedModule,
     CommonModule,

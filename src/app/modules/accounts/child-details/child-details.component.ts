@@ -21,7 +21,6 @@ export class ChildDetailsComponent implements OnInit {
   child: Observable<Child>;
   childGuardians: Observable<Array<Guardian>>;
   readOnlyForm = true;
-  hover = false;
 
   constructor(private childSelectSharedService: ChildSelectSharedService,
               private fb: FormBuilder,
@@ -34,22 +33,9 @@ export class ChildDetailsComponent implements OnInit {
     this.child.subscribe(child => {
       this.childGuardians = this.guardianService.findAllGuardians(child.id);
     });
-
   }
 
-  onHover($event: MouseEvent) {
-    this.hover = $event.type === 'mouseover';
-  }
-
-  onEdit() {
-    this.readOnlyForm = false;
-  }
-
-  onCancelForm() {
-    this.readOnlyForm = true;
-  }
-
-  onSaveForm() {
-    this.readOnlyForm = true;
+  onEditMode($event: boolean) {
+    this.readOnlyForm = !$event;
   }
 }

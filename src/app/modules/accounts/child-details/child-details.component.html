@@ -1,92 +1,11 @@
-<div class="child-details">
-  <div [ngClass]="{'edit-mark' : !readOnlyForm }" class="personal-data">
-    <ng-container *ngIf="readOnlyForm; else editMode">
-      <div class="person-card">
-        <div class="person-card-container">
-          <div class="img">
-            <img *ngIf="(child | async)?.gender == 'FEMALE' " src="../../../../assets/images/girl.png" height="80"
-                 width="80"/>
-            <img *ngIf="(child | async)?.gender == 'MALE' " src="../../../../assets/images/icon-boy.png" height="80"
-                 width="80"/>
-          </div>
-          <div class="title">
-            <span class="full-name"> {{(child | async).name }} {{(child | async).surname }}</span>
-            <p>Dziecko</p>
-          </div>
-          <div class="action">
-            <button (click)="onEdit()" mat-icon-button>
-              <span class="material-icons">edit</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </ng-container>
-    <ng-template #editMode>
-      <div class="edit-card">
-        <div class="edit-item">
-          <span class="edit">Tryb edycji danych dziecka </span>
-        </div>
-        <div class="edit-item action-buttons">
-          <button mat-raised-button color="warn" class="margin-right" (click)="onCancelForm()">Anuluj</button>
-          <button mat-raised-button color="primary" (click)="onSaveForm()">Zapisz</button>
-        </div>
-      </div>
-    </ng-template>
-
-    <app-child-form [child]="child" [readOnly]="readOnlyForm"> </app-child-form>
-
+<div class="child-details-main-container">
+  <div [ngClass]="{'edit-mark' : !readOnlyForm }" class="child-details-left-container">
+    <app-child-full-name-card [childInput]="child" (editModeOutput)="onEditMode($event)"></app-child-full-name-card>
+    <app-child-form [child]="child" [readOnly]="readOnlyForm"></app-child-form>
   </div>
-
-  <ng-container>
-    <div class="other-information">
-      <mat-card class="item">
-        <mat-accordion>
-          <mat-expansion-panel class="mat-elevation-z0">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Opiekunowie dziecka
-              </mat-panel-title>
-              <mat-panel-description>
-                Lista prawnych opiekunów dziecka
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <div class="item-context-container">
-
-              <ng-container *ngFor="let guardian of childGuardians | async; index as i; last as last ">
-                <div (mouseover)="onHover($event)" (mouseout)="onHover($event)" class="item-context">
-                  <div class="item-img">
-                    <img src="../../../../assets/images/tata.png" height="25" width="25"/>
-                  </div>
-                  <div class="item-col">
-                    {{guardian.name}} {{guardian.surname}}
-                  </div>
-                  <div class="item-col">
-                    {{guardian.phone}}
-                  </div>
-                  <div class="item-col">
-                    {{guardian.email}}
-                  </div>
-                  <div *ngIf="hover" class="item-col">
-                    <span class="material-icons">email</span>
-                  </div>
-                </div>
-                <div  class="divider">
-                </div>
-              </ng-container>
-
-              <div class="add-button-container">
-                <button class="mat-elevation-z0" mat-mini-fab color="primary">
-                  <mat-icon>add</mat-icon>
-                </button>
-              </div>
-
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </mat-card>
-    </div>
-  </ng-container>
-
+  <div class="child-details-right-container">
+    <app-borough-details></app-borough-details>
+    <app-guardians-child [childGuardians]="childGuardians"></app-guardians-child>
+  </div>
 </div>
 
