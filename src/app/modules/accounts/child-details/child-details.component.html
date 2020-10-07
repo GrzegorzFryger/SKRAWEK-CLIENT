@@ -1,7 +1,13 @@
 <div class="child-details-main-container">
   <div [ngClass]="{'edit-mark' : !readOnlyForm }" class="child-details-left-container">
-    <app-child-full-name-card [childInput]="child" (editModeOutput)="onEditMode($event)"></app-child-full-name-card>
-    <app-child-form [child]="child" [readOnly]="readOnlyForm"></app-child-form>
+    <app-child-full-name-card
+      [childInput]="child"
+      (editModeOutput)="onEditMode($event)">
+    </app-child-full-name-card>
+    <app-child-form
+      [child]="child"
+      [readOnly]="readOnlyForm">
+    </app-child-form>
   </div>
   <div class="child-details-right-container">
     <app-borough-details></app-borough-details>
