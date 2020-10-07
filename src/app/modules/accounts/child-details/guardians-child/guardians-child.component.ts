@@ -9,15 +9,9 @@ import {Guardian} from '../../../../data/model/accounts/guardian';
 })
 export class GuardiansChildComponent implements OnInit {
   @Input() childGuardians: Observable<Array<Guardian>>;
-  hover = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  onHover($event: MouseEvent) {
-    this.hover = $event.type === 'mouseover';
-  }
-
 }

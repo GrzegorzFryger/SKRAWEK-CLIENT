@@ -1,12 +1,8 @@
 .item {
-  min-width: 320px;
-  flex: 0 0 0;
-  display: flex;
   border-radius: 16px;
   margin-bottom: 16px;
 
   .mat-accordion {
-    width: 100%;
 
     .item-context-container {
       display: flex;

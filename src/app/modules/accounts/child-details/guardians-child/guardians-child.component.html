@@ -1,42 +1,45 @@
 <mat-card class="item">
-  <mat-accordion>
-    <mat-expansion-panel class="mat-elevation-z0">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Opiekunowie dziecka
-        </mat-panel-title>
-        <mat-panel-description>
-          Lista prawnych opiekunów dziecka
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div class="item-context-container">
-        <ng-container *ngFor="let guardian of childGuardians | async; index as i; last as last ">
-          <div (mouseover)="onHover($event)" (mouseout)="onHover($event)" class="item-context">
-            <div class="item-img">
-              <img src="../../../../assets/images/tata.png" height="25" width="25"/>
+  <mat-card-header>
+    <mat-card-title>Opiekunowie dziecka</mat-card-title>
+    <mat-card-subtitle>Informacje na temat opiekunów dziecka</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Opiekunowie
+          </mat-panel-title>
+          <mat-panel-description>
+            Lista prawnych opiekunów dziecka
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="item-context-container">
+          <ng-container *ngFor="let guardian of childGuardians | async; index as i; last as last ">
+            <div class="item-context">
+              <div class="item-img">
+                <img src="../../../../assets/images/tata.png" height="25" width="25"/>
+              </div>
+              <div class="item-col">
+                {{guardian.name}} {{guardian.surname}}
+              </div>
+              <div class="item-col">
+                {{guardian.phone}}
+              </div>
+              <div class="item-col">
+                {{guardian.email}}
+              </div>
             </div>
-            <div class="item-col">
-              {{guardian.name}} {{guardian.surname}}
+            <div class="divider">
             </div>
-            <div class="item-col">
-              {{guardian.phone}}
-            </div>
-            <div class="item-col">
-              {{guardian.email}}
-            </div>
-            <div *ngIf="hover" class="item-col">
-              <span class="material-icons">email</span>
-            </div>
+          </ng-container>
+          <div class="add-button-container">
+            <button class="mat-elevation-z0" mat-mini-fab color="primary">
+              <mat-icon>add</mat-icon>
+            </button>
           </div>
-          <div class="divider">
-          </div>
-        </ng-container>
-        <div class="add-button-container">
-          <button class="mat-elevation-z0" mat-mini-fab color="primary">
-            <mat-icon>add</mat-icon>
-          </button>
         </div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
 </mat-card>
