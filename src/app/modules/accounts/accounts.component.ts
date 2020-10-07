@@ -33,6 +33,7 @@ export class AccountsComponent implements OnInit {
   /** ------------- */
 
   public currentRoute = '/accounts';
+  public onActiveSelect: boolean;
 
   constructor(private childService: ChildService,
               private guardianService: GuardianService,
@@ -43,7 +44,7 @@ export class AccountsComponent implements OnInit {
 
     this.childrenOutput = {
       data: this.childrenSub.asObservable(),
-      columnToDisplay: this.childColumnsToDisplay.filter(x => x !== 'select'),
+      columnToDisplay: this.childColumnsToDisplay.filter(x => x !== ''),
     };
 
     this.guardiansSub = new ReplaySubject<Array<Guardian>>(1);
@@ -87,8 +88,9 @@ export class AccountsComponent implements OnInit {
 
   /** Children output */
   onSelectChildEvent($event: Array<Child>) {
-    console.log('Select + ' + $event);
-
+    console.log('on child Select + ' + $event);
+    console.log('array + '  + ($event.length > 0));
+    this.onActiveSelect = $event.length > 0;
   }
 
   onClickChildEvent($event: Child) {

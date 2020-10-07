@@ -21,6 +21,11 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        .mat-form-field {
+          flex: 1 1 49%;
+        }
+
       }
     }
   }

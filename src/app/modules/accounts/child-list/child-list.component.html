@@ -77,8 +77,8 @@
       </ng-container>
 
 
-      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-      <mat-row *matRowDef="let row, let children; columns: columnsToDisplay;" (click)="onClick(children)" >
+      <mat-header-row  *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row matRipple *matRowDef="let row, let children; columns: columnsToDisplay;" (click)="onClick(children)">
       </mat-row>
     </mat-table>
   </div>

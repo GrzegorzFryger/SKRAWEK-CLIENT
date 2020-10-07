@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Child} from '../../../../data/model/accounts/child';
 import {Observable} from 'rxjs';
@@ -11,7 +11,8 @@ interface GenderType {
 @Component({
   selector: 'app-child-form',
   templateUrl: './child-form.component.html',
-  styleUrls: ['./child-form.component.scss']
+  styleUrls: ['./child-form.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ChildFormComponent implements OnInit {
   @Input() child: Observable<Child>;

@@ -30,11 +30,12 @@ import {ChildFormComponent} from './child-details/child-form/child-form.componen
 import { BoroughDetailsComponent } from './child-details/borough-details/borough-details.component';
 import { GuardiansChildComponent } from './child-details/guardians-child/guardians-child.component';
 import { ChildFullNameCardComponent } from './child-details/child-full-name-card/child-full-name-card.component';
+import { AddAccountDialogComponent } from './add-account-dialog/add-account-dialog.component';
 
 
 @NgModule({
   declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent,
-    ChildDetailsComponent, ChildFormComponent, BoroughDetailsComponent, GuardiansChildComponent, ChildFullNameCardComponent],
+    ChildDetailsComponent, ChildFormComponent, BoroughDetailsComponent, GuardiansChildComponent, ChildFullNameCardComponent, AddAccountDialogComponent],
   imports: [
     SharedModule,
     CommonModule,

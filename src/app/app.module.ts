@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import {MatButtonModule} from '@angular/material/button';
 import { AccountComponent } from './layout/account/account.component';
+import {MatRippleModule} from '@angular/material/core';
 
 
 registerLocaleData(localePl);
@@ -21,15 +22,16 @@ registerLocaleData(localePl);
     NavigationComponent,
     AccountComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    CoreModule,
-    SharedModule,
-    MatButtonModule,
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        SharedModule,
+        MatButtonModule,
+        MatRippleModule,
+    ],
   providers: [
     {
       provide: LOCALE_ID, useValue: 'pl'
