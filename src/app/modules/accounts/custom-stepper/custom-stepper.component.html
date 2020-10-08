@@ -10,12 +10,12 @@
 
   <div class="context" [style.display]="selected ? 'block' : 'none'">
     <!-- Content from the CdkStep is projected here -->
-    <ng-container [ngTemplateOutlet]="selected.content"></ng-container>
+      <ng-container [ngTemplateOutlet]="selected.content"></ng-container>
   </div>
 
 
   <div class="footer">
-    <button mat-raised-button color="primary"  cdkStepperPrevious>&larr;</button>
-    <button mat-raised-button color="primary"  cdkStepperNext>&rarr;</button>
+    <button mat-button color="primary" cdkStepperPrevious>Poprzedni</button>
+    <button mat-raised-button color="primary" cdkStepperNext>Następny</button>
   </div>
 </div>

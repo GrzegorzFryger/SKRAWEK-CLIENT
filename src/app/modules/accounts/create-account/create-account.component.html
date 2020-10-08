@@ -1,22 +1,30 @@
 <div class="create-account-component">
   <div class="left-container">
     <nav class="navigation-type-account">
-      <div matRipple [ngClass]="{'active': selectedTab === 'guardian'}" class="type"
-           (click)="onSelectTab('guardian')">
-        <p>Rodzic</p>
-      </div>
       <div matRipple [ngClass]="{'active': selectedTab === 'child'}" class="type "
            (click)="onSelectTab('child')">
         <p>Dziecko</p>
       </div>
+      <div matRipple [ngClass]="{'active': selectedTab === 'guardian'}" class="type"
+           (click)="onSelectTab('guardian')">
+        <p>Rodzic</p>
+      </div>
     </nav>
     <div class="context">
-      <ng-container *ngIf="selectedTab === 'guardian'; else loading">
+      <ng-container *ngIf="selectedTab === 'child'; else loading">
         <app-custom-stepper [title]="'title'">
-          <cdk-step [label]="'Informacje personalne'"></cdk-step>
-          <cdk-step [label]="'Informacje personalne'"><p>This is any content of "Step 2"</p></cdk-step>
-          <cdk-step [label]="'Informacje personalne'"><p>This is any content of "Step 2"</p></cdk-step>
-          <cdk-step [label]="'Informacje personalne'"><p>This is any content of "Step 2"</p></cdk-step>
+          <cdk-step [label]="'Informacje personalne '">
+            <ng-container *ngTemplateOutlet="personalInformationStepForm"></ng-container>
+          </cdk-step>
+          <cdk-step [label]="'Informacje szkolne '">
+            <ng-container *ngTemplateOutlet="schoolInformationStepForm"></ng-container>
+          </cdk-step>
+          <cdk-step [label]="'Uwagi'">
+            <ng-container *ngTemplateOutlet="commentsInformationStepForm"></ng-container>
+          </cdk-step>
+          <cdk-step [label]="'Podsumowanie'">
+
+          </cdk-step>
         </app-custom-stepper>
       </ng-container>
 
@@ -29,9 +37,185 @@
   </div>
   <div class="right-container">
 
+    <div class="full-name-card">
+      <div class="full-name-card-container">
+        <div class="img-col">
+          <img src="../../../../assets/images/girl.png" height="80"
+               width="80"/>
+          <!--          <img *ngIf="(childInput | async)?.gender == 'MALE' " src="../../../../assets/images/icon-boy.png" height="80"-->
+          <!--               width="80"/>-->
+        </div>
+        <div class="title-col">
+          <ng-container *ngIf="value else nameSurname">
+            <span class="full-name"> {{value?.name}} {{value?.surname}} </span>
+          </ng-container>
+          <ng-template #nameSurname>
+            <span class="full-name"> Imie Nazwisko </span>
+          </ng-template>
+          <p>Dziecko</p>
+        </div>
+      </div>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        Informacje personalne
+      </div>
+    </div>
+    <div class="wrapper">
+      <p>{{value?.gender}}</p>
+      <p>{{value?.pesel}} {{(value?.dateOfBirth | date)}} </p>
+      <p>{{value?.postalCode}} {{value?.city}} {{value?.streetNumber}} </p>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        Informacje szkolne
+      </div>
+    </div>
+    <div class="wrapper">
+      <p>{{value?.gender}}</p>
+      <p>{{value?.pesel}} {{(value?.dateOfBirth | date)}} </p>
+      <p>{{value?.postalCode}} {{value?.city}} {{value?.streetNumber}} </p>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        Uwagi
+      </div>
+    </div>
+    <div class="wrapper">
+      <p>{{value?.gender}}</p>
+      <p>{{value?.pesel}} {{(value?.dateOfBirth | date)}} </p>
+      <p>{{value?.postalCode}} {{value?.city}} {{value?.streetNumber}} </p>
+    </div>
+
+    <div class="footer">
+       <button mat-raised-button color="primary">Utwórz konto</button>
+    </div>
   </div>
+
+
+
+
 </div>
 
-<ng-template>
+<ng-template #personalInformationStepForm>
+  <div class="title-container">
+    <div class="title">
+      Informacje personalne
+    </div>
+    <div class="subtitle">
+      Adres, pesel, ect.
+    </div>
+  </div>
+  <form class="form-container" [formGroup]="form">
+    <div class="field">
+      <mat-form-field class="margin-right" appearance="standard">
+        <mat-label>Imię</mat-label>
+        <input matInput placeholder="Imię" formControlName="name">
 
+      </mat-form-field>
+      <mat-form-field class="margin-left" appearance="standard">
+        <mat-label>Nazwisko</mat-label>
+        <input matInput placeholder="Nazwisko" formControlName="surname">
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="standard">
+      <mat-label>Płeć</mat-label>
+      <mat-select [disabled]="readOnly" placeholder="Płeć" formControlName="gender">
+        <mat-option *ngFor="let gender of genderTypes" [value]="gender.value">
+          {{gender.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="field">
+      <mat-form-field appearance="standard">
+        <mat-label>Pesel</mat-label>
+        <input [readonly]="readOnly" matInput placeholder="pesel" formControlName="pesel">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Data urodzin</mat-label>
+        <input [readonly]="readOnly" matInput [matDatepicker]="dateOfBirth" formControlName="dateOfBirth">
+        <mat-datepicker-toggle [disabled]="readOnly" matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+        <mat-datepicker #dateOfBirth></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="field">
+      <mat-form-field appearance="standard">
+        <mat-label>Kod pocztowy</mat-label>
+        <input [readonly]="readOnly" matInput placeholder="Kod pocztowy" formControlName="postalCode">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Miasto</mat-label>
+        <input [readonly]="readOnly" matInput placeholder="Miasto" formControlName="city">
+      </mat-form-field>
+    </div>
+    <mat-form-field class="street" appearance="standard">
+      <mat-label>Ulica i numer</mat-label>
+      <input [readonly]="readOnly" matInput placeholder="Ulica" formControlName="streetNumber">
+    </mat-form-field>
+  </form>
+</ng-template>
+<ng-template #schoolInformationStepForm>
+  <div class="title-container">
+    <div class="title">
+      Informacje szkolne
+    </div>
+    <div class="subtitle">
+      Grupa, Okres nauki ect.
+    </div>
+  </div>
+  <form class="form-container" [formGroup]="form">
+    <mat-form-field appearance="standard">
+      <mat-label>Status</mat-label>
+      <mat-select [disabled]="readOnly" placeholder="Status" formControlName="status">
+        <mat-option *ngFor="let gender of genderTypes" [value]="gender.value">
+          {{gender.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="field">
+      <mat-form-field appearance="standard">
+        <mat-label>Data rozpoczecia</mat-label>
+        <input [readonly]="readOnly" matInput [matDatepicker]="startDate" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Data zakończenia</mat-label>
+        <input [readonly]="readOnly" matInput [matDatepicker]="endDate" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="group" appearance="standard">
+      <mat-label>Grupa</mat-label>
+      <input [readonly]="readOnly" matInput placeholder="Grupa" formControlName="group">
+    </mat-form-field>
+  </form>
+</ng-template>
+<ng-template #commentsInformationStepForm>
+  <div class="title-container">
+    <div class="title">
+      Uwagi
+    </div>
+    <div class="subtitle">
+      Dotyczące dyrekcji i administracji, posiłków ect.
+    </div>
+  </div>
+  <form class="form-container" [formGroup]="form">
+    <mat-form-field appearance="standard">
+      <mat-label>Uwagi dotyczące dyrekcji i administracji</mat-label>
+      <textarea [readonly]="readOnly" placeholder="W systemie nie ma jeszcze żadnych uwag"
+                formControlName="commentsAdministration" matInput></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Uwagi dotyczące posiłków</mat-label>
+      <textarea [readonly]="readOnly" placeholder="W systemie nie ma jeszcze żadnych uwag"
+                formControlName="commentsMeals" matInput></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Inne uwagi</mat-label>
+      <textarea [readonly]="readOnly" placeholder="W systemie nie ma jeszcze żadnych uwag"
+                formControlName="commentsOthers" matInput></textarea>
+    </mat-form-field>
+  </form>
 </ng-template>
