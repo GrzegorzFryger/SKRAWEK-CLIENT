@@ -1,0 +1,43 @@
+.custom-stepper {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 16px 0 16px 0;
+    padding: 0 16px 0 16px;
+
+    .step {
+      padding: 16px 16px 8px 16px;
+
+      p {
+        display: inline;
+        margin: 0 8px 0 0;
+        color: rgb(171, 175, 178);
+        font-weight: 500;
+      }
+    }
+
+    .active {
+      border-bottom: 2px solid #673ab7;
+
+      p {
+        color: #673ab7 !important;
+      }
+    }
+  }
+
+  .context {
+    padding: 16px;
+  }
+
+  .footer {
+    display: flex;
+    padding: 0 16px 0 16px;
+  }
+
+}
+

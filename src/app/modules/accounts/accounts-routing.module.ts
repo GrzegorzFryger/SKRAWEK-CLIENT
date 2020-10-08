@@ -1,19 +1,24 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {AccountComponent} from '../../layout/account/account.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {AccountsComponent} from './accounts.component';
-import {AccountDetailsComponent} from './account-details/account-details.component';
 import {ChildDetailsComponent} from './child-details/child-details.component';
+import {CreateAccountComponent} from './create-account/create-account.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: AccountsComponent,
-    children: [{
-      path: 'child',
-      component: ChildDetailsComponent
-    }]
+    children: [
+      {
+        path: 'child',
+        component: ChildDetailsComponent
+      },
+      {
+        path: 'create',
+        component: CreateAccountComponent
+      }
+      ]
   }
 ];
 
@@ -21,4 +26,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AccountsRoutingModule { }
+export class AccountsRoutingModule {
+}

@@ -27,15 +27,17 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {ChildFormComponent} from './child-details/child-form/child-form.component';
-import { BoroughDetailsComponent } from './child-details/borough-details/borough-details.component';
-import { GuardiansChildComponent } from './child-details/guardians-child/guardians-child.component';
-import { ChildFullNameCardComponent } from './child-details/child-full-name-card/child-full-name-card.component';
-import { AddAccountDialogComponent } from './add-account-dialog/add-account-dialog.component';
+import {BoroughDetailsComponent} from './child-details/borough-details/borough-details.component';
+import {GuardiansChildComponent} from './child-details/guardians-child/guardians-child.component';
+import {ChildFullNameCardComponent} from './child-details/child-full-name-card/child-full-name-card.component';
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { CustomStepperComponent } from './custom-stepper/custom-stepper.component';
 
 
 @NgModule({
   declarations: [AccountsComponent, ChildListComponent, ActionMenuComponent, AccountDetailsComponent, GuardianListComponent,
-    ChildDetailsComponent, ChildFormComponent, BoroughDetailsComponent, GuardiansChildComponent, ChildFullNameCardComponent, AddAccountDialogComponent],
+    ChildDetailsComponent, ChildFormComponent, BoroughDetailsComponent, GuardiansChildComponent, ChildFullNameCardComponent, CreateAccountComponent, CustomStepperComponent],
   imports: [
     SharedModule,
     CommonModule,
@@ -57,7 +59,8 @@ import { AddAccountDialogComponent } from './add-account-dialog/add-account-dial
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatRippleModule
+    MatRippleModule,
+    CdkStepperModule
   ]
 })
 export class AccountsModule {

@@ -1,0 +1,46 @@
+.create-account-component {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+
+  .left-container {
+    flex: 0 1 60%;
+    display: flex;
+    flex-direction: column;
+
+    .navigation-type-account {
+      min-height: 7%;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      .type {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px 16px 0 0;
+        background-color: #F0F2F5;
+        //border-bottom: 1px solid #F0F2F5;
+
+        p {
+          font-weight: 500;
+          margin: 0;
+        }
+
+      }
+
+      .active {
+        background-color: white;
+      }
+    }
+
+    .context {
+      height: 100%;
+      background-color: white;
+      border-radius: 0 0 16px 16px;
+    }
+
+  }
+
+}

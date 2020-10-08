@@ -1,0 +1,21 @@
+<div class="custom-stepper">
+  <div class="header">
+    <ng-container *ngFor="let step  of steps;index as i">
+      <div matRipple [ngClass]="{'active': selectedIndex === i}"  class="step">
+        <p>{{i + 1}}.</p>
+        <p>{{step.label}}</p>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="context" [style.display]="selected ? 'block' : 'none'">
+    <!-- Content from the CdkStep is projected here -->
+    <ng-container [ngTemplateOutlet]="selected.content"></ng-container>
+  </div>
+
+
+  <div class="footer">
+    <button mat-raised-button color="primary"  cdkStepperPrevious>&larr;</button>
+    <button mat-raised-button color="primary"  cdkStepperNext>&rarr;</button>
+  </div>
+</div>

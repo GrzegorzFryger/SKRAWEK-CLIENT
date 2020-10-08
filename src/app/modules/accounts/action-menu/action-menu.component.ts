@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {AddAccountDialogComponent} from '../add-account-dialog/add-account-dialog.component';
 
 @Component({
   selector: 'app-action-menu',
@@ -17,14 +16,5 @@ export class ActionMenuComponent implements OnInit {
   }
 
   onClickAddUser() {
-    const dialogRef = this.dialog.open(AddAccountDialogComponent, {
-      maxWidth: '100vw',
-      maxHeight: '100vh',
-      height: '80%',
-      width: '90%'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 }

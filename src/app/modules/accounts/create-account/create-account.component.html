@@ -1,0 +1,37 @@
+<div class="create-account-component">
+  <div class="left-container">
+    <nav class="navigation-type-account">
+      <div matRipple [ngClass]="{'active': selectedTab === 'guardian'}" class="type"
+           (click)="onSelectTab('guardian')">
+        <p>Rodzic</p>
+      </div>
+      <div matRipple [ngClass]="{'active': selectedTab === 'child'}" class="type "
+           (click)="onSelectTab('child')">
+        <p>Dziecko</p>
+      </div>
+    </nav>
+    <div class="context">
+      <ng-container *ngIf="selectedTab === 'guardian'; else loading">
+        <app-custom-stepper [title]="'title'">
+          <cdk-step [label]="'Informacje personalne'"></cdk-step>
+          <cdk-step [label]="'Informacje personalne'"><p>This is any content of "Step 2"</p></cdk-step>
+          <cdk-step [label]="'Informacje personalne'"><p>This is any content of "Step 2"</p></cdk-step>
+          <cdk-step [label]="'Informacje personalne'"><p>This is any content of "Step 2"</p></cdk-step>
+        </app-custom-stepper>
+      </ng-container>
+
+      <ng-template #loading>
+        <div>Loading...</div>
+      </ng-template>
+
+    </div>
+
+  </div>
+  <div class="right-container">
+
+  </div>
+</div>
+
+<ng-template>
+
+</ng-template>
